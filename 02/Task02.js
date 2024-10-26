@@ -1,27 +1,25 @@
 import React from 'react';
-import {Route, Link} from 'react-router-dom'
-import Product from '../src/components/Product';
-import products from '../src/products.json'
+import { Route, Link, useParams } from "react-router-dom";
+import Product from "../src/components/Product";
+
+import products from "../src/products.json";
 
 const Task02 = () => {
-    const list = products.map(item=> (
-        <li key={item.id}>
-            <Link to={`/task02/product-${item.id}`}>
-            {item.name}
-            </Link>
-        </li>   
-         ));
+  const ProductPage = () => {
+    const { id } = useParams();
+    const productItem = products.filter((item) => Number(id) === item.id);
+    return <Product {...productItem[0]} />;
+  };
+  return (
+    <>
+      <h1>Task02</h1>
 
-         
-    return ( <>
-        <h1>Task02</h1>
-        {list}
-        <Route path="/task02/product-:id">
-<Product />
-        </Route>
-        </>
-    );
-}
+      <Route path="/task02/product-:id">
+        <ProductPage />
+      </Route>
+    </>
+  );
+};
 
 export default Task02;
 
