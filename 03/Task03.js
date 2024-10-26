@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, useParams, Link } from "react-router-dom";
+import { Route, useParams } from "react-router-dom";
 import Shop from "../src/components/Shop";
 import products from "./../src/products.json";
 
